@@ -38,9 +38,12 @@ const WeatherComponent = () => {
 
   const extractData = () => {
     if (!data || !data.data || !data.data.timelines) return [];
-    const intervals = data.data.timelines.flatMap(
-      timeline => timeline.intervals,
-    );
+    // const intervals = data.data.timelines.flatMap(
+    //   timeline => timeline.intervals,
+    // );
+    const intervals = data.data.timelines.find(
+      a => a.timestep === '1h',
+    )?.intervals;
     return intervals?.map(interval => ({
       windSpeed: interval.values.windSpeed,
       temperature: interval.values.temperature,
