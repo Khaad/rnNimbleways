@@ -33,7 +33,7 @@ export const fetchWeather = () => {
   return async dispatch => {
     dispatch(fetchWeatherRequest());
     try {
-      const response = await axios.get('http://192.168.1.103:3000/weather');
+      const response = await axiosInstance.get('/weather');
       dispatch(fetchWeatherSuccess(response.data));
     } catch (error) {
       dispatch(fetchWeatherFailure(error.message));
